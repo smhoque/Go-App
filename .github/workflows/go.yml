@@ -33,4 +33,4 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
         AWS_DEFAULT_REGION: "us-west-2"
       run: |
-        aws s3 cp ./simplemath s3://${{ secrets.TARGET_BUCKET }}/
+        aws s3 cp example/hello s3://${{ secrets.TARGET_BUCKET }}/
