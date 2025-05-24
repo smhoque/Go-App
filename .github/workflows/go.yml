@@ -26,6 +26,11 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+
+    - name: Build or generate file (if needed)
+      run: |
+        mkdir -p example
+        echo "Hello, world!" > example/hello
       
     - name: Upload Binary to S3
       env:
