@@ -39,3 +39,16 @@ jobs:
         AWS_DEFAULT_REGION: "us-west-2"
       run: |
         aws s3 cp example/hello s3://${{ secrets.TARGET_BUCKET }}/
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download S3
+      uses: joutvhu/download-s3@v1.0.0
+      with:
+        aws_access_key_id: ${{ secrets.ACCESS_KEY }}
+        aws_secret_access_key: ${{ secrets.SECRET_KEY }}
+        aws_region: "eu-central-1"
+        aws_bucket: ${{ secrets.TARGET_BUCKET }}
+        target: .
